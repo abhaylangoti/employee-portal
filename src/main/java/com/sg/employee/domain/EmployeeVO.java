@@ -4,18 +4,18 @@ import java.util.Date;
 
 public class EmployeeVO {
     
-    private String id;
+    private Long id;
     private String firstName;
     private String lastName;
     private Gender gender;
     private Department department;
     private Date dateOfBirth;
     
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId( String id ) {
+    public void setId( Long id ) {
         this.id = id;
     }
 

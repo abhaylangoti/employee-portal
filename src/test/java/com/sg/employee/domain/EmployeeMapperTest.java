@@ -28,5 +28,23 @@ public class EmployeeMapperTest {
         Assertions.assertThat( employee.getDateOfBirth() ).isEqualTo( employeeVO.getDateOfBirth() );
         Assertions.assertThat( employee.getDepartment() ).isEqualTo( employeeVO.getDepartment() );
     }
+    
+    
+    @Test
+    public void testMapToEmployeeVO() {
+        Employee employee = new Employee();
+        employee.setDateOfBirth( new Date(System.currentTimeMillis()) );
+        employee.setDepartment( Department.HR );
+        employee.setGender( Gender.MALE );
+        employee.setFirstName( "firstName" );
+        employee.setLastName( "lastName" );
+        employee.setId( 123L );
+        EmployeeVO employeeVO = mapper.mapToEmployeeVO( employee  );
+        Assertions.assertThat( employee.getFirstName() ).isEqualTo( employeeVO.getFirstName() );
+        Assertions.assertThat( employee.getLastName() ).isEqualTo( employeeVO.getLastName() );
+        Assertions.assertThat( employee.getDateOfBirth() ).isEqualTo( employeeVO.getDateOfBirth() );
+        Assertions.assertThat( employee.getDepartment() ).isEqualTo( employeeVO.getDepartment() );
+        Assertions.assertThat( employee.getId() ).isEqualTo( employeeVO.getId() );
+    }
 
 }

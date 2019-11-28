@@ -64,7 +64,7 @@ public class EmployeeControllerTest {
         EmployeeVO employeeVO = createEmployeeObject( firstName, currentTimeMillis, department, gender, lastName );
         EmployeeVO employeeVOResponse = createEmployeeObject( firstName, currentTimeMillis, department, gender,
                 lastName );
-        employeeVOResponse.setId( "id" );
+        employeeVOResponse.setId( 123L);
         org.mockito.BDDMockito.given( employeeService.register( ArgumentMatchers.any( EmployeeVO.class ) ) )
                 .willReturn( employeeVOResponse );
         mockMvc.perform(
