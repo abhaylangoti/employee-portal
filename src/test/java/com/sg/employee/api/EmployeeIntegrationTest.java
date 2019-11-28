@@ -53,7 +53,6 @@ public class EmployeeIntegrationTest {
         Assertions.assertThat( employeeResponse.getDateOfBirth().getTime() ).isEqualTo( currentTimeMillis );
         Assertions.assertThat( employeeResponse.getDepartment() ).isEqualTo( department );
         Assertions.assertThat( employeeResponse.getGender() ).isEqualTo( gender);
-        Assertions.assertThat( employeeResponse.getId() ).isNotNull();
 
     }
 }
