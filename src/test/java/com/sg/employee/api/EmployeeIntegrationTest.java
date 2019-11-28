@@ -20,7 +20,7 @@ import com.sg.employee.domain.Gender;
 
 @ExtendWith( SpringExtension.class )
 @SpringBootTest( webEnvironment = WebEnvironment.RANDOM_PORT )
-public class EmployeeControllerTest {
+public class EmployeeIntegrationTest {
 
     @LocalServerPort
     int serverPort;
