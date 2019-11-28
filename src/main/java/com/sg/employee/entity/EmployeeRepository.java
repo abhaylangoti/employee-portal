@@ -1,11 +1,7 @@
 package com.sg.employee.entity;
 
+import org.springframework.data.repository.CrudRepository;
 
-
-public class EmployeeRepository {
-
-    public Employee save( Employee employee ) {
-        return null;
-    }
+public interface EmployeeRepository extends CrudRepository< Employee, String > {
 
 }

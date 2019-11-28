@@ -1,5 +1,72 @@
 package com.sg.employee.entity;
 
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import com.sg.employee.domain.Department;
+import com.sg.employee.domain.Gender;
+
+@Entity
 public class Employee {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private Gender gender;
+    private Department department;
+    private Date dateOfBirth;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId( Long id ) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName( String firstName ) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName( String lastName ) {
+        this.lastName = lastName;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender( Gender gender ) {
+        this.gender = gender;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment( Department department ) {
+        this.department = department;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth( Date dateOfBirth ) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
 }
