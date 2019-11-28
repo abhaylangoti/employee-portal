@@ -3,6 +3,7 @@ package com.sg.employee.api;
 import java.util.Date;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +28,7 @@ public class EmployeeIntegrationTest {
     @Autowired
     TestRestTemplate testRestTemplate;
 
- //   @Test
+    @Test
     public void testCreateEmployeeSuccess() {
         EmployeeVO employeeVO = new EmployeeVO();
         String firstName = "Rajesh";
@@ -52,6 +53,7 @@ public class EmployeeIntegrationTest {
         Assertions.assertThat( employeeResponse.getDateOfBirth().getTime() ).isEqualTo( currentTimeMillis );
         Assertions.assertThat( employeeResponse.getDepartment() ).isEqualTo( department );
         Assertions.assertThat( employeeResponse.getGender() ).isEqualTo( gender);
+        Assertions.assertThat( employeeResponse.getId() ).isNotNull();
 
     }
 }
