@@ -1,8 +1,12 @@
 package com.sg.employee.service;
 
-import org.springframework.stereotype.Repository;
+import com.sg.employee.entity.Employee;
 
-@Repository
-public interface EmployeeRepository {
+
+public class EmployeeRepository {
+
+    public Employee save( Employee employee ) {
+        return null;
+    }
 
 }
