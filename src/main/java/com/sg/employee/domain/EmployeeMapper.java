@@ -15,8 +15,9 @@ public class EmployeeMapper {
     }
 
     public EmployeeVO mapToEmployeeVO( Employee employee ) {
-        // TODO Auto-generated method stub
-        return null;
+        EmployeeVO employeeVO = new EmployeeVO();
+        BeanUtils.copyProperties(  employee, employeeVO );
+        return employeeVO;
     }
 
 }
