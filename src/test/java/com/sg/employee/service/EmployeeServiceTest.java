@@ -15,6 +15,7 @@ import com.sg.employee.domain.Department;
 import com.sg.employee.domain.EmployeeVO;
 import com.sg.employee.domain.Gender;
 import com.sg.employee.entity.Employee;
+import com.sg.employee.entity.EmployeeRepository;
 
 @ExtendWith( MockitoExtension.class )
 public class EmployeeServiceTest {

@@ -1,6 +1,5 @@
-package com.sg.employee.service;
+package com.sg.employee.entity;
 
-import com.sg.employee.entity.Employee;
 
 
 public class EmployeeRepository {
