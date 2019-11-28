@@ -1,13 +1,17 @@
-package com.sg.employee.service;
+package com.sg.employee.domain;
 
-import com.sg.employee.domain.EmployeeVO;
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
+
 import com.sg.employee.entity.Employee;
 
+@Component
 public class EmployeeMapper {
 
     public Employee mapToEmployee( EmployeeVO employeeVO ) {
-        // TODO Auto-generated method stub
-        return null;
+        Employee employee = new Employee();
+        BeanUtils.copyProperties( employeeVO, employee );
+        return employee;
     }
 
     public EmployeeVO mapToEmployeeVO( Employee employee ) {
