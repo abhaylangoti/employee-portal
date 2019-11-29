@@ -68,13 +68,6 @@ public class EmployeeServiceTest {
 
         final EmployeeVO employeeVO = createEmployeeObject( null, currentTimeMillis, department, gender, lastName );
 
-        BDDMockito.given( employeeMapper.mapToEmployee( ArgumentMatchers.any( EmployeeVO.class ) ) ).willReturn(
-                new Employee() );
-        BDDMockito.given( employeeMapper.mapToEmployeeVO( ArgumentMatchers.any( Employee.class ) ) ).willReturn(
-                employeeVO );
-        BDDMockito.given( employeeRepository.save( ArgumentMatchers.any( Employee.class ) ) ).willReturn(
-                new Employee() );
-
         Assertions.assertThatThrownBy( ( ) -> {
             employeeService.register( employeeVO );
         } ).isInstanceOf( IllegalArgumentException.class ).hasMessageContaining( "firstName is missing" );

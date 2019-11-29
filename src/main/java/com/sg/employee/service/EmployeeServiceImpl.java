@@ -26,9 +26,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public EmployeeVO register( EmployeeVO employeeVO ) {
+        validateRequest(employeeVO);
         Employee employee = employeeMapper.mapToEmployee( employeeVO );
         employee = employeeRepository.save( employee );
         employeeVO = employeeMapper.mapToEmployeeVO( employee );
         return employeeVO;
+    }
+
+    private void validateRequest( EmployeeVO employeeVO ) {
+        if(employeeVO.getFirstName() == null || employeeVO.getFirstName().isEmpty()) {
+          throw new IllegalArgumentException( "firstName is missing" );  
+        }
+        
     }
 }
