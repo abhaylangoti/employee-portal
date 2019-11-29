@@ -30,7 +30,7 @@ public class EmployeeServiceTest {
 
     @BeforeEach
     public void setup() {
-        employeeService = new EmployeeServiceImpl(employeeRepository, employeeMapper);
+        employeeService = new EmployeeServiceImpl( employeeRepository, employeeMapper );
     }
 
     @Test
@@ -49,13 +49,36 @@ public class EmployeeServiceTest {
                 employeeVO );
         BDDMockito.given( employeeRepository.save( ArgumentMatchers.any( Employee.class ) ) ).willReturn(
                 new Employee() );
-        
+
         employeeVO = employeeService.register( employeeVO );
 
         Assertions.assertThat( employeeVO.getFirstName() ).isEqualTo( firstName );
         Assertions.assertThat( employeeVO.getLastName() ).isEqualTo( lastName );
         Assertions.assertThat( employeeVO.getDepartment() ).isEqualTo( department );
         Assertions.assertThat( employeeVO.getGender() ).isEqualTo( gender );
+
+    }
+
+    @Test
+    public void testRegisterEmployeeFirstNameEmpty() {
+        long currentTimeMillis = System.currentTimeMillis();
+        Department department = Department.HR;
+        Gender gender = Gender.FEMALE;
+        String lastName = "Kumar";
+
+        final EmployeeVO employeeVO = createEmployeeObject( null, currentTimeMillis, department, gender, lastName );
+
+        BDDMockito.given( employeeMapper.mapToEmployee( ArgumentMatchers.any( EmployeeVO.class ) ) ).willReturn(
+                new Employee() );
+        BDDMockito.given( employeeMapper.mapToEmployeeVO( ArgumentMatchers.any( Employee.class ) ) ).willReturn(
+                employeeVO );
+        BDDMockito.given( employeeRepository.save( ArgumentMatchers.any( Employee.class ) ) ).willReturn(
+                new Employee() );
+
+        Assertions.assertThatThrownBy( ( ) -> {
+            employeeService.register( employeeVO );
+        } ).isInstanceOf( IllegalArgumentException.class ).hasMessageContaining( "firstName is missing" );
+        ;
 
     }
 
