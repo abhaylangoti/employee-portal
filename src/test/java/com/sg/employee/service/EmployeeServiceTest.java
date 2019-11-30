@@ -41,7 +41,7 @@ public class EmployeeServiceTest {
         Gender gender = Gender.FEMALE;
         String lastName = "Kumar";
 
-        EmployeeVO employeeVO = createEmployeeObject( firstName, currentTimeMillis, department, gender, lastName );
+        EmployeeVO employeeVO = buildEmployeeVO( firstName, currentTimeMillis, department, gender, lastName );
 
         BDDMockito.given( employeeMapper.mapToEmployee( ArgumentMatchers.any( EmployeeVO.class ) ) ).willReturn(
                 new Employee() );
@@ -66,7 +66,7 @@ public class EmployeeServiceTest {
         Gender gender = Gender.FEMALE;
         String lastName = "Kumar";
 
-        final EmployeeVO employeeVO = createEmployeeObject( null, currentTimeMillis, department, gender, lastName );
+        final EmployeeVO employeeVO = buildEmployeeVO( null, currentTimeMillis, department, gender, lastName );
 
         Assertions.assertThatThrownBy( ( ) -> {
             employeeService.register( employeeVO );
@@ -74,8 +74,18 @@ public class EmployeeServiceTest {
         ;
 
     }
+    
+    @Test
+    public void testRegisterEmployeeNullRequest() {
 
-    private EmployeeVO createEmployeeObject( String firstName, long currentTimeMillis, Department department,
+        Assertions.assertThatThrownBy( ( ) -> {
+            employeeService.register( null );
+        } ).isInstanceOf( IllegalArgumentException.class ).hasMessageContaining( "Null or empty request" );
+        ;
+
+    }
+
+    private EmployeeVO buildEmployeeVO( String firstName, long currentTimeMillis, Department department,
             Gender gender, String lastName ) {
         EmployeeVO employeeVO = new EmployeeVO();
         employeeVO.setFirstName( firstName );
